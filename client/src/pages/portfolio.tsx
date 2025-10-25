@@ -21,13 +21,19 @@ import {
   Menu,
   X,
   ArrowUp,
+  Brain,
+  Sparkles,
+  Cpu,
+  Network,
+  Bot,
+  Zap,
 } from "lucide-react";
 import profileImage from "@assets/b4c7869b-c0cd-4385-9456-cb80f1adb948-1_all_19025-removebg-preview_1761286709032.png";
 
 export default function Portfolio() {
   const [typedText, setTypedText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
-  const roles = ["Software Engineer", "Full Stack Developer", ".NET Specialist", "React Developer"];
+  const roles = ["AI/ML Engineer", "Full Stack Developer", "LLM Workflow Specialist", "Chatbot Architect", "React Developer"];
   const [isDeleting, setIsDeleting] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -93,18 +99,18 @@ export default function Portfolio() {
             >
               M. Muddassir
             </motion.div>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              {["About", "Experience", "Projects", "Skills", "Contact"].map((item, i) => (
+              {["About", "AI/ML", "Experience", "Projects", "Skills", "Contact"].map((item, i) => (
                 <motion.button
                   key={item}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  onClick={() => scrollToSection(item.toLowerCase())}
+                  onClick={() => scrollToSection(item.toLowerCase().replace('/', '-'))}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
-                  data-testid={`link-nav-${item.toLowerCase()}`}
+                  data-testid={`link-nav-${item.toLowerCase().replace('/', '-')}`}
                 >
                   {item}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
@@ -137,12 +143,12 @@ export default function Portfolio() {
             className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border"
           >
             <div className="max-w-7xl mx-auto px-6 py-4 space-y-4">
-              {["About", "Experience", "Projects", "Skills", "Contact"].map((item) => (
+              {["About", "AI/ML", "Experience", "Projects", "Skills", "Contact"].map((item) => (
                 <button
                   key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
+                  onClick={() => scrollToSection(item.toLowerCase().replace('/', '-'))}
                   className="block w-full text-left py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                  data-testid={`link-mobile-${item.toLowerCase()}`}
+                  data-testid={`link-mobile-${item.toLowerCase().replace('/', '-')}`}
                 >
                   {item}
                 </button>
@@ -181,12 +187,14 @@ export default function Portfolio() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg text-muted-foreground max-w-xl"
+                className="text-lg text-muted-foreground max-w-xl leading-relaxed"
                 data-testid="text-summary"
               >
                 Software Engineering graduate from NED University with 1.5+ years of hands-on experience
-                in full-stack development, specializing in .NET and React. Building responsive web
-                applications and delivering clean, maintainable code.
+                in <span className="text-primary font-semibold">AI/ML engineering</span> and full-stack development.
+                Specializing in <span className="text-primary font-semibold">custom LLM workflows, chatbot creation,
+                  intelligent agents, RAG systems</span>, and GPT-4 integration. Building intelligent,
+                responsive applications that leverage cutting-edge AI technology.
               </motion.p>
 
               <motion.div
@@ -235,7 +243,7 @@ export default function Portfolio() {
                   </a>
                 </Button>
                 <Button size="icon" variant="ghost" asChild className="hover-elevate active-elevate-2" data-testid="link-email">
-                  <a href="mailto:muddassir@example.com">
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=muddassirmuhammad371@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Muhammad,%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20opportunities.%0A%0A" target="_blank" rel="noopener noreferrer">
                     <Mail className="w-5 h-5" />
                   </a>
                 </Button>
@@ -276,7 +284,7 @@ export default function Portfolio() {
       <AnimatedSection id="about">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <SectionTitle icon={<Code2 />} title="About Me" />
-          
+
           <div className="grid md:grid-cols-3 gap-6 mt-12">
             <StatCard
               number="1.5+"
@@ -284,12 +292,12 @@ export default function Portfolio() {
               delay={0}
             />
             <StatCard
-              number="3"
-              label="Major Projects"
+              number="10+"
+              label="AI/ML Projects"
               delay={0.1}
             />
             <StatCard
-              number="Full Stack"
+              number="AI/ML + Full Stack"
               label="Expertise"
               delay={0.2}
             />
@@ -302,14 +310,116 @@ export default function Portfolio() {
             transition={{ delay: 0.3 }}
             className="mt-12 max-w-4xl mx-auto"
           >
-            <Card className="p-8">
+            <Card className="p-8 glass-effect">
               <p className="text-lg leading-relaxed text-muted-foreground" data-testid="text-about">
-                I'm a passionate full-stack developer with a strong foundation in both frontend and backend
-                technologies. My journey in software engineering has equipped me with the skills to build
-                responsive web applications, integrate RESTful APIs, and deliver clean, maintainable code.
-                I'm committed to continuous learning and collaborating with teams to create quality solutions
-                that make a difference.
+                I'm a passionate AI/ML engineer and full-stack developer with a strong foundation in both
+                cutting-edge artificial intelligence and modern web technologies. My journey in software
+                engineering has equipped me with the skills to build intelligent applications powered by
+                Large Language Models, create sophisticated chatbots and AI agents, implement RAG systems,
+                and seamlessly integrate GPT-4 into production applications. I'm committed to continuous
+                learning and leveraging AI to create innovative solutions that make a real impact.
               </p>
+            </Card>
+          </motion.div>
+        </div>
+      </AnimatedSection>
+
+      {/* AI/ML Expertise Section */}
+      <AnimatedSection id="ai-ml">
+        <div className="max-w-6xl mx-auto px-6 py-24 bg-gradient-to-b from-primary/5 to-transparent">
+          <SectionTitle icon={<Brain />} title="AI/ML Expertise" />
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center text-muted-foreground text-lg max-w-3xl mx-auto mb-12"
+          >
+            Leveraging cutting-edge AI technologies to build intelligent, scalable solutions that transform how
+            users interact with applications. Explore my <a href="https://github.com/Muddssir44" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">GitHub repositories</a> to see these technologies in action.
+          </motion.p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            <AIExpertiseCard
+              icon={<Sparkles className="w-6 h-6" />}
+              title="Custom LLM Workflows"
+              description="Design and implement custom Large Language Model workflows tailored to specific business needs, optimizing for performance and cost-efficiency."
+              technologies={["GPT-4", "Claude", "Llama", "Prompt Engineering"]}
+              delay={0}
+            />
+
+            <AIExpertiseCard
+              icon={<Bot className="w-6 h-6" />}
+              title="Chatbot Creation"
+              description="Build intelligent, context-aware chatbots with natural language understanding, multi-turn conversations, and seamless integration."
+              technologies={["OpenAI API", "LangChain", "Vector DBs", "NLU"]}
+              delay={0.1}
+            />
+
+            <AIExpertiseCard
+              icon={<Network className="w-6 h-6" />}
+              title="AI Agents & Automation"
+              description="Develop autonomous AI agents that can perform complex tasks, make decisions, and interact with multiple systems intelligently."
+              technologies={["LangGraph", "AutoGPT", "Agent Frameworks", "Tool Calling"]}
+              delay={0.2}
+            />
+
+            <AIExpertiseCard
+              icon={<Cpu className="w-6 h-6" />}
+              title="MCP Servers"
+              description="Implement Model Context Protocol servers for efficient AI model deployment, scaling, and management in production environments."
+              technologies={["FastAPI", "Model Serving", "API Design", "Docker"]}
+              delay={0.3}
+            />
+
+            <AIExpertiseCard
+              icon={<Brain className="w-6 h-6" />}
+              title="RAG Systems"
+              description="Build Retrieval-Augmented Generation systems that combine the power of LLMs with domain-specific knowledge for accurate responses."
+              technologies={["Vector Embeddings", "Pinecone", "ChromaDB", "Semantic Search"]}
+              delay={0.4}
+            />
+
+            <AIExpertiseCard
+              icon={<Zap className="w-6 h-6" />}
+              title="GPT-4 Integration"
+              description="Seamlessly integrate GPT-4 and other AI models into web applications, mobile apps, and enterprise systems with robust error handling."
+              technologies={["OpenAI API", "Streaming", "Function Calling", "Fine-tuning"]}
+              delay={0.5}
+            />
+          </div>
+
+          {/* Featured AI Projects Highlight */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="mt-16"
+          >
+            <Card className="p-8 bg-gradient-to-br from-primary/10 via-chart-2/10 to-chart-3/10 border-primary/20 glow">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary rounded-lg">
+                  <Github className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-['Space_Grotesk'] text-2xl font-bold mb-3">
+                    Explore My AI/ML Projects
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    Check out my GitHub profile to see real-world implementations of these AI/ML technologies.
+                    From intelligent chatbots to custom LLM workflows, RAG systems, and AI agent frameworks -
+                    all production-ready and well-documented.
+                  </p>
+                  <Button asChild className="group">
+                    <a href="https://github.com/Muddssir44" target="_blank" rel="noopener noreferrer">
+                      <Github className="mr-2 w-4 h-4" />
+                      View GitHub Repositories
+                      <ExternalLink className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
             </Card>
           </motion.div>
         </div>
@@ -319,7 +429,7 @@ export default function Portfolio() {
       <AnimatedSection id="experience">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <SectionTitle icon={<Briefcase />} title="Professional Experience" />
-          
+
           <div className="mt-12 space-y-8">
             <ExperienceCard
               company="Code N Consult"
@@ -334,7 +444,7 @@ export default function Portfolio() {
               ]}
               delay={0}
             />
-            
+
             <ExperienceCard
               company="Andev Matrix"
               role="Full Stack Software Engineer"
@@ -349,7 +459,7 @@ export default function Portfolio() {
               ]}
               delay={0.2}
             />
-            
+
             <ExperienceCard
               company="Infosys Tech"
               role="Frontend Development Intern"
@@ -370,7 +480,7 @@ export default function Portfolio() {
       <AnimatedSection id="projects">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <SectionTitle icon={<Code2 />} title="Featured Projects" />
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             <ProjectCard
               title="Study Connect"
@@ -378,7 +488,7 @@ export default function Portfolio() {
               technologies={["React", "TypeScript", "REST API", "Responsive Design"]}
               delay={0}
             />
-            
+
             <ProjectCard
               title="Asaan Campus"
               description="Developed mobile application with React Native frontend and .NET backend for academic data management."
@@ -386,7 +496,7 @@ export default function Portfolio() {
               delay={0.1}
               highlight
             />
-            
+
             <ProjectCard
               title="Language Access"
               description="Created React Native mobile app with responsive UI using TypeScript and JavaScript with RESTful API integration."
@@ -401,41 +511,72 @@ export default function Portfolio() {
       <AnimatedSection id="skills">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <SectionTitle icon={<Code2 />} title="Technical Skills" />
-          
+
           <div className="mt-12 space-y-12">
             <SkillCategory
+              title="AI/ML & LLM Technologies"
+              icon={<Brain className="w-5 h-5" />}
+              skills={[
+                { name: "GPT-4 & OpenAI API", level: 95 },
+                { name: "LangChain & LangGraph", level: 92 },
+                { name: "RAG Systems & Vector DBs", level: 90 },
+                { name: "Prompt Engineering", level: 93 },
+                { name: "AI Agent Development", level: 88 },
+                { name: "MCP Server Implementation", level: 85 },
+              ]}
+              delay={0}
+            />
+
+            <SkillCategory
               title="Frontend Development"
+              icon={<Code2 className="w-5 h-5" />}
               skills={[
                 { name: "React.js", level: 90 },
                 { name: "JavaScript (ES6+)", level: 88 },
                 { name: "TypeScript", level: 85 },
                 { name: "HTML5 & CSS3", level: 92 },
-                { name: "Responsive Design", level: 90 },
+                { name: "Tailwind CSS", level: 90 },
+                { name: "Next.js", level: 85 },
               ]}
-              delay={0}
+              delay={0.15}
             />
-            
+
             <SkillCategory
               title=".NET & Backend"
+              icon={<Cpu className="w-5 h-5" />}
               skills={[
                 { name: ".NET Framework", level: 85 },
                 { name: "C#", level: 82 },
-                { name: "RESTful API", level: 88 },
-                { name: "SQL", level: 80 },
-                { name: "API Development", level: 85 },
+                { name: "RESTful API Development", level: 88 },
+                { name: "FastAPI & Python", level: 87 },
+                { name: "SQL & NoSQL Databases", level: 83 },
+                { name: "Node.js & Express", level: 85 },
               ]}
-              delay={0.2}
+              delay={0.3}
             />
-            
+
+            <SkillCategory
+              title="AI/ML Tools & Frameworks"
+              icon={<Sparkles className="w-5 h-5" />}
+              skills={[
+                { name: "Pinecone & ChromaDB", level: 88 },
+                { name: "Hugging Face Transformers", level: 85 },
+                { name: "LLM Fine-tuning", level: 80 },
+                { name: "Semantic Search", level: 90 },
+              ]}
+              delay={0.45}
+            />
+
             <SkillCategory
               title="Tools & Practices"
+              icon={<Zap className="w-5 h-5" />}
               skills={[
                 { name: "Git & Version Control", level: 90 },
-                { name: "Agile Methodology", level: 85 },
-                { name: "API Testing", level: 82 },
-                { name: "Code Reviews", level: 88 },
+                { name: "Docker & Containerization", level: 85 },
+                { name: "CI/CD Pipelines", level: 83 },
+                { name: "Agile Methodology", level: 88 },
               ]}
-              delay={0.4}
+              delay={0.6}
             />
           </div>
         </div>
@@ -445,7 +586,7 @@ export default function Portfolio() {
       <AnimatedSection id="education">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <SectionTitle icon={<GraduationCap />} title="Education & Certifications" />
-          
+
           <div className="grid md:grid-cols-2 gap-8 mt-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -525,7 +666,7 @@ export default function Portfolio() {
       <AnimatedSection id="contact">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <SectionTitle icon={<Mail />} title="Get In Touch" />
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -541,8 +682,8 @@ export default function Portfolio() {
               <ContactCard
                 icon={<Mail />}
                 label="Email"
-                value="muddassir@example.com"
-                href="mailto:muddassir@example.com"
+                value="muddassirmuhammad371@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=muddassirmuhammad371@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Muhammad,%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20opportunities.%0A%0A"
                 delay={0}
               />
               <ContactCard
@@ -556,14 +697,14 @@ export default function Portfolio() {
                 icon={<Github />}
                 label="GitHub"
                 value="github.com/muddassir"
-                href="https://github.com/muddassir"
+                href="https://github.com/Muddssir44"
                 delay={0.2}
               />
               <ContactCard
                 icon={<Linkedin />}
                 label="LinkedIn"
                 value="linkedin.com/in/muddassir"
-                href="https://linkedin.com/in/muddassir"
+                href="https://www.linkedin.com/in/muhammad-muddassir-316556269/"
                 delay={0.3}
               />
             </div>
@@ -637,8 +778,9 @@ function StatCard({ number, label, delay }: { number: string; label: string; del
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay }}
+      className="h-full"
     >
-      <Card className="p-6 text-center hover-elevate active-elevate-2 transition-all" data-testid={`card-stat-${label.toLowerCase().replace(/\s+/g, '-')}`}>
+      <Card className="p-6 text-center hover-elevate active-elevate-2 transition-all h-full flex flex-col justify-center" data-testid={`card-stat-${label.toLowerCase().replace(/\s+/g, '-')}`}>
         <div className="text-4xl font-['Space_Grotesk'] font-bold text-primary mb-2" data-testid={`stat-number-${label.toLowerCase().replace(/\s+/g, '-')}`}>
           {number}
         </div>
@@ -744,10 +886,12 @@ function ProjectCard({
 
 function SkillCategory({
   title,
+  icon,
   skills,
   delay,
 }: {
   title: string;
+  icon?: React.ReactNode;
   skills: Array<{ name: string; level: number }>;
   delay: number;
 }) {
@@ -759,7 +903,14 @@ function SkillCategory({
       transition={{ delay }}
       data-testid={`skill-category-${title.toLowerCase().replace(/\s+/g, '-')}`}
     >
-      <h3 className="font-['Space_Grotesk'] text-2xl font-bold mb-6" data-testid={`text-skill-category-${title.toLowerCase().replace(/\s+/g, '-')}`}>{title}</h3>
+      <div className="flex items-center gap-3 mb-6">
+        {icon && (
+          <div className="p-2 bg-primary/10 rounded-lg">
+            <div className="text-primary">{icon}</div>
+          </div>
+        )}
+        <h3 className="font-['Space_Grotesk'] text-2xl font-bold" data-testid={`text-skill-category-${title.toLowerCase().replace(/\s+/g, '-')}`}>{title}</h3>
+      </div>
       <div className="grid md:grid-cols-2 gap-6">
         {skills.map((skill, i) => (
           <SkillBar key={skill.name} skill={skill.name} level={skill.level} delay={delay + i * 0.05} />
@@ -863,6 +1014,48 @@ function ContactCard({
             <div className="text-sm font-mono" data-testid={`text-contact-value-${label.toLowerCase()}`}>{value}</div>
           </div>
         </a>
+      </Card>
+    </motion.div>
+  );
+}
+
+function AIExpertiseCard({
+  icon,
+  title,
+  description,
+  technologies,
+  delay,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  technologies: string[];
+  delay: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay }}
+    >
+      <Card className="p-6 h-full hover-elevate active-elevate-2 transition-all-smooth border-primary/20 group">
+        <div className="flex items-start gap-4 mb-4">
+          <div className="p-3 bg-gradient-to-br from-primary/20 to-chart-2/20 rounded-lg group-hover:scale-110 transition-transform">
+            <div className="text-primary">{icon}</div>
+          </div>
+          <div className="flex-1">
+            <h3 className="font-['Space_Grotesk'] text-xl font-bold mb-2">{title}</h3>
+          </div>
+        </div>
+        <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{description}</p>
+        <div className="flex flex-wrap gap-2">
+          {technologies.map((tech) => (
+            <Badge key={tech} variant="secondary" className="font-mono text-xs bg-primary/10 hover:bg-primary/20 transition-colors">
+              {tech}
+            </Badge>
+          ))}
+        </div>
       </Card>
     </motion.div>
   );
